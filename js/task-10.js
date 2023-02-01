@@ -11,32 +11,34 @@ function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
-const controls = document.querySelector("#controls");
-const input = document.querySelector("#controls input");
-const createButton = document.querySelector("#controls button[data-create]");
-const destroyButton = document.querySelector("#controls button[data-destroy]");
-const boxes = document.querySelector("#boxes");
+const controls = document.querySelector('#controls');
+const input = document.querySelector('#controls input');
+const createButton = document.querySelector('#controls button[data-create]');
+const destroyButton = document.querySelector('#controls button[data-destroy]');
+const boxes = document.querySelector('#boxes');
 
 // слухачі подій
-createButton.addEventListener("click", () => {
+createButton.addEventListener('click', () => {
   const amount = input.value;
   createBoxes(amount);
 });
-destroyButton.addEventListener("click", () => {
+destroyButton.addEventListener('click', () => {
   destroyBoxes();
 });
 
 // функція з циклом з додаванням елементу ширшим і вищим від попереднього на 10px
 function createBoxes(amount) {
+  const arrayBoxes = [];
   for (let i = 0; i < amount; i++) {
-    const box = document.createElement("div");
+    const box = document.createElement('div');
     box.style.width = `${30 + 10 * i}px`;
     box.style.height = `${30 + 10 * i}px`;
     box.style.backgroundColor = getRandomHexColor();
-    boxes.appendChild(box);
+    arrayBoxes.push(box);
   }
+  return boxes.append(...arrayBoxes);
 }
 // функція яка очищає вміст всіх div#boxes
 function destroyBoxes() {
-  boxes.innerHTML = "";
+  return (boxes.innerHTML = '');
 }

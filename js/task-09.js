@@ -6,12 +6,14 @@ function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
-const buttonChangeColor = document.querySelector(".change-color");
-const colorName = document.querySelector(".color");
+const buttonChangeColor = document.querySelector('.change-color');
+const colorName = document.querySelector('.color');
 const body = document.body;
 
 // по кліку змінюємо колір та виводимо значення кольору в span.color
-buttonChangeColor.addEventListener("click", () => {
-  colorName.textContent = getRandomHexColor();
-  body.style.backgroundColor = getRandomHexColor();
+buttonChangeColor.addEventListener('click', () => {
+  let color = getRandomHexColor();
+  colorName.textContent = color;
+  body.style.backgroundColor = color;
+  console.log(color);
 });
